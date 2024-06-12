@@ -1,0 +1,138 @@
+@keyframes loco{
+    0%{background: blue; transform: rotate(10deg) scale(1,1);}
+    20%{background: rgb(0, 255, 255); transform: rotate(-10deg) scale(1.5,1.5);}
+    40%{background: rgb(0, 255, 47); transform: rotate(10deg) scale(1,1);}
+    60%{background: rgb(229, 255, 0); transform: rotate(-10deg) scale(1.5,1.5);}
+    80%{background: rgb(255, 157, 0); transform: rotate(20deg) scale(1.5,1.5);}
+    90%{background: rgb(255, 0, 0); transform: rotate(-10deg) scale(2,2);}
+    100%{background: rgb(255, 0, 153); transform: rotate(10deg) scale(1,1);}
+}
+
+.contenedor{
+    align-items: center;
+    border: solid 0.1em;
+    display:flex;
+    height: 500px;
+    justify-content: space-around;
+}
+
+.contenedor div{
+    /* border: solid 0.1em; */
+    filter: grayscale(100%) blur(5px) drop-shadow(0px 0px 0px rgb(255, 255, 255)) ;
+    height: 400px;
+    width: 20%;
+    transition: all linear 0.4s;
+}
+
+.contenedor div:hover{
+    background-size: 100% 100%;
+    filter: grayscale(0) blur(0) drop-shadow(16px 16px 20px red) ;
+}
+
+.cupon{
+    display: none;
+    font-size: 48px;
+    font-style: italic;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.hija1{
+    background: url(1.jpg);
+    background-size: cover;
+}
+
+.hija2{
+    background: url(2.jpg);
+    background-size: cover;
+}
+
+.hija3{
+    background: url(3.jpg);
+    background-size: cover;
+}
+
+.hija4{
+    background: url(4.jpg);
+    background-size: cover;
+}
+
+.imprimir{
+    background: #fff url(print.png) no-repeat 15px 5px;
+    background-size: 15px 15px;
+    border-radius: 0.5em;
+    box-shadow:0.1em 0.1em 0.1em rgb(255, 0, 0);
+    color: red;
+    cursor: pointer;
+    display: block;
+    height: 20%;
+    letter-spacing: 0.25em;
+    margin:1em auto;
+    padding: 0.3em;
+    text-align: center;
+    transition: all linear 0.2s;
+    width:50%;
+}
+
+.imprimir:hover{
+    background: red url(print.png) no-repeat 15px 5px;
+    background-size: 20px 20px;
+    color: #fff;
+    font-size: 16px;
+    font-style: oblique;
+    height: 23%;
+    letter-spacing: 0.3em;
+    width: 53%;
+}
+
+@media print{
+    body{
+        background:silver;
+    }
+    .hija1,.hija3{
+        display:none
+    }
+    .contenedor{
+        background-color: rgb(0, 0, 0);
+        flex-direction: column;
+    }
+    .contenedor div{
+        filter:none;
+        background-size: 100% 100%;
+        width: 50%;
+    }
+    .cupon{
+        display: block;
+    }
+    .imprimir{
+        display: none;
+    }
+}
+
+@media screen and (orientation:landscape){
+    body{
+        background: darkblue;
+    }
+}
+
+@media screen and (orientation:portrait){
+    body{
+        background: lightblue;
+    }
+}
+
+@media screen and (max-width:700px){
+    .contenedor{
+        flex-direction: column;
+        height: auto;
+    }
+    .contenedor div{
+        filter: grayscale(0) blur(0) drop-shadow(0);
+        height: 400px;
+        margin-top: 1em;
+        width: 100%;
+    }
+    .contenedor .hija1{
+        animation: loco alternate 5s;
+    }
+}
